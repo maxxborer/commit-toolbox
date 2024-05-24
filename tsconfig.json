@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ES2020",
+    "lib": ["ES2020"],
+
+    "outDir": "./lib",
+    "rootDir": "./src",
+    "baseUrl": "./",
+    "strict": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "sourceMap": true,
+    "paths": {
+      "~/*": ["src/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.d.ts", "**/*.js"],
+  "exclude": ["node_modules", "lib", "dist", "./jest.config.js", "./jest.setup.js", "coverage"]
+}

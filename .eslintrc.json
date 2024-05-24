@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json.schemastore.org/eslintrc.json",
+  "root": true,
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "modules": true
+    },
+    "project": "./tsconfig.json"
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:sonarjs/recommended-legacy",
+    "plugin:deprecation/recommended",
+    "plugin:security/recommended-legacy",
+    "plugin:optimize-regex/all",
+    "prettier"
+  ],
+  "plugins": ["@typescript-eslint", "unused-imports", "simple-import-sort", "import", "prettier"],
+  "rules": {
+    "prefer-rest-params": 0,
+    "security/detect-object-injection": 0,
+    "space-before-function-paren": 0,
+    "comma-dangle": ["warn", "only-multiline"],
+    "semi": ["warn", "always"],
+    "id-length": ["warn", { "min": 2, "exceptions": ["_"], "properties": "never" }],
+    "curly": ["warn", "all"],
+    "no-console": [
+      "warn",
+      {
+        "allow": ["warn", "error", "info", "groupCollapsed", "table", "groupEnd"]
+      }
+    ],
+    "no-unused-vars": "warn",
+    "simple-import-sort/imports": "warn",
+    "simple-import-sort/exports": "warn",
+    "import/first": "warn",
+    "import/newline-after-import": "warn",
+    "import/no-duplicates": "error",
+    "sonarjs/no-duplicate-string": "warn",
+    "sonarjs/cognitive-complexity": "warn",
+    "padding-line-between-statements": [
+      "warn",
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": ["multiline-const", "multiline-expression", "return", "multiline-block-like"]
+      },
+      { "blankLine": "always", "prev": "iife", "next": "*" },
+      {
+        "blankLine": "always",
+        "prev": ["import", "function", "multiline-expression", "const", "let", "var"],
+        "next": "*"
+      },
+      {
+        "blankLine": "any",
+        "prev": ["const", "let", "var"],
+        "next": ["const", "let", "var"]
+      },
+      { "blankLine": "always", "prev": "const", "next": "const" },
+      { "blankLine": "any", "prev": "*", "next": "singleline-const" },
+      { "blankLine": "any", "prev": "import", "next": "import" },
+      { "blankLine": "always", "prev": "import", "next": "const" },
+      { "blankLine": "any", "prev": "case", "next": "case" }
+    ],
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "prettier/prettier": ["warn", {}, { "usePrettierrc": true }]
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.vue"],
+      "rules": {
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          {
+            "vars": "all",
+            "varsIgnorePattern": "^_",
+            "args": "after-used",
+            "argsIgnorePattern": "^_"
+          }
+        ]
+      }
+    }
+  ]
+}

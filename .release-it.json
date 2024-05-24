@@ -1,0 +1,29 @@
+{
+  "git": {
+    "requireCleanWorkingDir": true,
+    "commitMessage": "Release ${version}",
+    "tagName": "${version}",
+    "tagAnnotation": "Release ${version}",
+    "push": true
+  },
+  "github": {
+    "release": true,
+    "tokenRef": "GITHUB_TOKEN",
+    "assets": ["lib/*"],
+    "draft": false,
+    "preRelease": false,
+    "autoGenerate": true
+  },
+  "npm": {
+    "publish": true
+  },
+  "hooks": {
+    "after:bump": "npx auto-changelog -p"
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": "angular",
+      "skipChecks": true
+    }
+  }
+}

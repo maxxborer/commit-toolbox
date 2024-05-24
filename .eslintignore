@@ -1,0 +1,21 @@
+# Ignore everything recursively...
+*
+
+!*.ts
+!*.js
+!*.json
+!*.md
+
+# Check subdirectories too
+!*/
+
+node_modules
+coverage
+
+# But still ignore the dist folder
+dist/**
+lib/**
+
+jest.config.js
+jest.setup.js
+.commit-toolbox.config.js
