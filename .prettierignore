@@ -1,0 +1,17 @@
+# Ignore everything recursively...
+*
+
+!*.ts
+!*.js
+!*.json
+!*.md
+
+node_modules
+coverage
+
+# But still ignore the dist folder
+dist/**
+lib/**
+
+# Check subdirectories too
+!*/

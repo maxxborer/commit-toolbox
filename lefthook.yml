@@ -1,0 +1,17 @@
+pre-commit:
+  skip:
+    - ref: master
+  parallel: true
+  commands:
+    format:
+      glob: '*.{js,ts,cjs,mjs,json,yml,yaml,md}'
+      run: pnpm run format && git add {staged_files}
+    lint:
+      glob: '*.{js,ts,cjs,mjs}'
+      run: pnpm run lint:raw --no-error-on-unmatched-pattern --fix {staged_files}
+    test:
+      glob: '*.{js,ts,cjs,mjs,json,yml,yaml}'
+      run: pnpm run test
+    build:
+      glob: '*.{js,ts,cjs,mjs,json,yml,yaml}'
+      run: pnpm run build

@@ -1,0 +1,40 @@
+name: PR Checks
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint_and_test:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x, 22.x]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v3
+      with:
+        version: 9.1.1
+        run_install: false
+
+    - name: Install dependencies
+      run: pnpm install
+
+    - name: Run lint
+      run: pnpm run lint
+
+    - name: Run tests
+      run: pnpm run test
+
+    - name: Build project
+      run: pnpm run build
